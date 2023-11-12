@@ -1,0 +1,50 @@
+<div class="outer">
+    <div class="container">
+      <div class="row">
+        <div class="offset-md-3 col-md-6">
+          <mat-card class="panel" color="primary">
+            <mat-card-header>
+              <mat-card-title class="panel-heading">
+                <h3 class="pt-3 font-weight-bold">Sign Up</h3>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="panel-body p-3">
+              <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <mat-form-field class="form-group" appearance="fill">
+                  <mat-icon matPrefix class="fa fa-user p-2"></mat-icon>
+                  <input  matInput formControlName="username" placeholder="Username">
+                  <div *ngIf="signupForm.get('username')?.hasError('required') && signupForm.get('username')?.touched" class="error-message">
+                    Username is required.
+                  </div>
+                  <div *ngIf="signupForm.get('username')?.hasError('minlength') && signupForm.get('username')?.touched" class="error-message">
+                    Username must be at least 3 characters long.
+                  </div>
+                </mat-form-field>
+  
+                <mat-form-field class="form-group" appearance="fill">
+                  <mat-icon matPrefix class="fa fa-lock p-2"></mat-icon>
+                  <input matInput formControlName="password" [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Password">
+                  <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                    <mat-icon>{{ isPasswordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+                  </button>
+                  <div *ngIf="signupForm.get('password')?.hasError('required') && signupForm.get('password')?.touched" class="error-message">
+                    Password is required.
+                  </div>
+                  <div *ngIf="signupForm.get('password')?.hasError('minlength') && signupForm.get('password')?.touched" class="error-message">
+                    Password must be at least 6 characters long.
+                  </div>
+                </mat-form-field>
+  
+                <button mat-raised-button type="submit" color="accent" class="btn btn-primary btn-block mt-4">Register</button>
+                <div class="text-center pt-4 text-muted">
+                  Already have an account?
+                  <a id="forget" routerLink="/login" class="font-weight-bold"> Login</a>
+                </div>
+              </form>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  

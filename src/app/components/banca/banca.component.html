@@ -1,0 +1,20 @@
+<div class="container my-5">
+    <h1 class="text-center mb-4">Banche</h1>
+    <button mat-raised-button color="primary" routerLink="add">Add Banca</button>
+    
+ <table class="table table-striped table-bordered table-responsive" *ngIf="banche">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let banca of banche">
+                <td>{{ banca.id }}</td>
+                <td>{{ banca.nome }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p *ngIf="!banche" class="text-center">No drinks found</p>
+</div>
