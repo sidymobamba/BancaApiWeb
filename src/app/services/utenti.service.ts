@@ -16,4 +16,8 @@ export class UtentiService {
   getAllUtentti(): Observable<Utente[]> {
     return this.http.get<Utente[]>(this.baseApiUrl + 'api/utenti');
   }
+
+  getUtentiByBancaId(idBanca: number): Observable<Utente[]> {
+    return this.http.get<Utente[]>(`${this.baseApiUrl}api/utenti/byBanca/${idBanca}`);
+  }
 }

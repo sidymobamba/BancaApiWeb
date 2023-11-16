@@ -6,20 +6,17 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>IdBanca</th>
                 <th>NomeUtente</th>
-                <th>Password</th>
                 <th>Bloccato </th>
+                <th> </th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let utente of utenti">
                 <td>{{ utente.id }}</td>
-                <td>{{ utente.idBanca }}</td>
                 <td>{{ utente.nomeUtente }}</td>
-                <td>{{ utente.password }}</td>
                 <td>{{ utente.bloccato }}</td>
-                <td><a [routerLink]="['/drink','edit', utente.id]">View</a></td>
+                <td><a [routerLink]="'/utenti/edit/' + utente.id">View</a></td>
             </tr>
         </tbody>
     </table>

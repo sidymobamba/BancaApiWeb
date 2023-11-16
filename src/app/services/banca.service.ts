@@ -16,4 +16,7 @@ export class BancaService {
   getAllBanks(): Observable<banca[]> {
     return this.http.get<banca[]>(this.baseApiUrl + 'api/Banca');
   }
+  getBancaById(idBanca: number): Observable<banca> {
+    return this.http.get<banca>(`${this.baseApiUrl}api/Banca/${idBanca}`);
+  }
 }

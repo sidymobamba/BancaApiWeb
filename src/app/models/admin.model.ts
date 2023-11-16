@@ -1,6 +1,6 @@
-export interface admin{
+export interface Admin{
     id: number;
     username: string;
     password: string;
-    banca?: null;
+    idBanca: number;
 }

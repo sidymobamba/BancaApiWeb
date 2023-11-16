@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -50,7 +51,9 @@ import { SelectBancaComponent } from './components/select-banca/select-banca.com
     HttpClientModule,
     MatCardModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
+  
     
   ],
   providers: [],

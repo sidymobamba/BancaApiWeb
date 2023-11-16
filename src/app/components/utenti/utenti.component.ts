@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Utente } from 'src/app/models/utente.model';
 import { UtentiService } from 'src/app/services/utenti.service';
 
@@ -13,18 +14,31 @@ export class UtentiComponent implements OnInit {
     {
       id: 0,
       idBanca: 0,
-      banca: null,
       nomeUtente: '',
       password: '',
       bloccato: 0
     }
   ]
 
-  constructor(private utentiService: UtentiService) {}
+  idBanca!: number;
+
+  constructor(private utentiService: UtentiService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.utentiService.getAllUtentti()
-      .subscribe({
+    // this.utentiService.getAllUtentti()
+    //   .subscribe({
+    //     next: (utentis) => {
+    //       this.utenti = utentis; 
+    //     },
+    //     error: (response) => {
+    //       console.log(response);
+    //     }
+    //   });
+
+    this.route.parent?.params.subscribe(parentParams => {
+      this.idBanca = +parentParams['idBanca'];
+      
+      this.utentiService.getUtentiByBancaId(this.idBanca).subscribe({
         next: (utentis) => {
           this.utenti = utentis; 
         },
@@ -33,6 +47,7 @@ export class UtentiComponent implements OnInit {
         }
       });
     
+    });
   }
 
 }

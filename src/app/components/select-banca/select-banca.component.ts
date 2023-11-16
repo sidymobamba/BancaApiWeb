@@ -1,3 +1,4 @@
+// Importa i moduli Angular Material necessari
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { banca } from 'src/app/models/banca.model';
@@ -20,10 +21,7 @@ export class SelectBancaComponent implements OnInit {
     });
   }
 
-  onBancaSelected(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    this.selectedBanca = parseInt(target.value, 10);
-
+  onBancaSelected(): void {
     // Navigate to the login page with the selected bancaId
     if (this.selectedBanca !== null) {
       this.router.navigate(['/login', this.selectedBanca]);

@@ -1,5 +1,3 @@
-// app-routing.module.ts
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -12,10 +10,10 @@ import { SelectBancaComponent } from './components/select-banca/select-banca.com
 const routes: Routes = [
   { path: 'selectBanca', component: SelectBancaComponent },
   {
-    path: '',
+    path: 'dashboard/:idBanca',
     component: DashboardComponent,
     children: [
-      { path: '', redirectTo: 'banche', pathMatch: 'full' },
+      { path: 'dashboard/:idBanca', redirectTo: 'banche', pathMatch: 'full' },
       { path: 'banche', component: BancaComponent },
       { path: 'utenti', component: UtentiComponent },
     ],

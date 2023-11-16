@@ -1,44 +1,49 @@
-/* select-banca.component.css */
-
+/* Aggiungi stili per il wrapper della selezione */
 .select-container {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-  }
-  
-  .label {
-    margin-bottom: 8px;
-    font-size: 1.2em;
-    color: #333;
-  }
-  
-  .custom-select {
-    position: relative;
-    width: 100%;
-  }
-  
-  .select-dropdown {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    appearance: none;
-    cursor: pointer;
-    font-size: 1em;
-    outline: none;
-  }
-  
-  .select-arrow {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 8px 6px 0;
-    border-color: #333 transparent transparent transparent;
-    pointer-events: none;
-  }
-  
+  width: 300px;
+  margin: 50px auto;
+}
+
+/* Stili per il form field */
+mat-form-field {
+  width: 100%;
+}
+
+/* Stili per il label della selezione */
+mat-label {
+  color: #3498db; /* Colore del testo */
+  font-size: 1.2em; /* Dimensione del testo */
+  font-weight: bold; /* Grassetto */
+}
+
+/* Stili per la freccia della selezione */
+mat-select-arrow {
+  color: #3498db; /* Colore della freccia */
+}
+
+/* Stili per l'opzione selezionata */
+.mat-selected-option {
+  background-color: #3498db; /* Colore di sfondo quando selezionato */
+  color: #ffffff; /* Colore del testo */
+}
+
+/* Stili per le opzioni della selezione */
+.mat-option {
+  font-size: 1em; /* Dimensione del testo */
+  color: #333; /* Colore del testo */
+}
+
+/* Stili per il bordo della selezione quando attiva */
+.mat-focused .mat-form-field-outline-end {
+  outline: 2px solid #3498db; /* Colore del bordo quando la selezione è attiva */
+}
+
+/* Stili per il bordo della selezione quando hover */
+.mat-form-field.mat-focused .mat-form-field-outline-end {
+  outline: 1px solid #3498db; /* Colore del bordo quando la selezione è in hover */
+}
+
+/* Stili per la freccia della selezione quando hover */
+.mat-select-arrow-wrapper:hover mat-select-arrow {
+  color: #1c6da8; /* Cambia il colore della freccia quando in hover */
+}

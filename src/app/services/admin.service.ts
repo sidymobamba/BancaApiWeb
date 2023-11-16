@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
-import { admin } from '../models/admin.model';
+import { Admin } from '../models/admin.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,28 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  signUp(newAdmin: any): Observable<admin> {
-    return this.http.post<admin>(`${this.baseApiUrl}api/Admin/register`, newAdmin);
+  getAllAdmin(): Observable<Admin[]> {
+    return this.http.get<Admin[]>(this.baseApiUrl + 'api/Admin');
   }
 
-  login(adminCredentials: any): Observable<admin> {
-    return this.http.post<admin>(`${this.baseApiUrl}api/Admin/authenticate`, adminCredentials);
+  signUp(newAdmin: any): Observable<Admin> {
+    return this.http.post<Admin>(`${this.baseApiUrl}api/Admin/register`, newAdmin);
+  }
+
+  login(adminCredentials: any, selectedBancaId: number): Observable<Admin> {
+    return this.http.post<Admin>(`${this.baseApiUrl}api/Admin/authenticate`, adminCredentials)
+      .pipe(
+        map(adminData => {
+          if (adminData && adminData.idBanca === selectedBancaId) {
+            return adminData;
+          } else {
+            throw new Error('Accesso non autorizzato');
+          }
+        }),
+        catchError(error => {
+          console.error('Errore durante il login:', error);
+          return throwError(error);
+        })
+      );
   }
 }
