@@ -4,5 +4,7 @@ export interface Utente{
     idBanca?: number;
     nomeUtente: string;
     password: string;
-    bloccato: number;
+    bloccato: boolean;
+    Role: string;
+    Token: string;
 }

@@ -20,13 +20,11 @@
   margin-bottom: 20px;
 }
 
-.full-width {
-  width: 100%;
+.d-flex {
+  display: flex;
+  justify-content: center;
 }
 
-.select-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+.m-2 {
+  margin: 8px;
 }

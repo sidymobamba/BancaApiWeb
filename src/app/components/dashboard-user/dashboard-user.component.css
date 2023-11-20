@@ -1,0 +1,77 @@
+/* .example-container: Stile del contenitore principale */
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #f5f5f5; /* Un colore di sfondo più leggero */
+    display: flex;
+  }
+  
+  /* .active: Stile per l'elemento attivo nella barra laterale */
+  .active {
+    background-color: #2196F3; /* Un colore di sfondo più attraente per l'elemento attivo */
+    color: #fff; /* Testo bianco per maggiore contrasto */
+  }
+  
+  /* .example-spacer: Stile per lo spaziatore nella barra degli strumenti */
+  .example-spacer {
+    flex: 1; /* Espandi per occupare tutto lo spazio disponibile */
+  }
+  
+  /* .sidebar: Stile per la barra laterale */
+  .sidebar {
+    width: 240px; /* Larghezza fissa della barra laterale */
+    background-color: #333; /* Colore di sfondo scuro per la barra laterale */
+    color: #fff; /* Testo bianco per maggiore contrasto */
+  }
+  
+  .toolbar {
+    background-color: #2196F3; /* Un colore di sfondo attraente per la barra degli strumenti */
+    color: #fff; /* Testo bianco per maggiore contrasto */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Aggiungi una leggera ombra */
+    position: relative; /* Per consentire il posizionamento assoluto dei figli */
+  }
+  
+  /* Icone: Stile per le icone nei menu */
+  mat-icon {
+    margin-right: 8px; /* Aggiungi spazio tra l'icona e il testo */
+  }
+  
+  /* .spacer: Spazio vuoto sopra del pulsante di logout */
+  .spacer {
+    flex-grow: 1;
+  }
+  
+  /* .logout-button: Stile per il pulsante di logout */
+  logout-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  /* Custom CSS */
+.nav-label {
+  margin-left: 10px;
+}
+
+.mat-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+/* Style the active link */
+.mat-list-item.active {
+  background-color: #3f51b5;
+  color: white;
+}
+
+/* Style the toolbar button */
+.example-icon {
+  color: white;
+  background-color: #f44336;
+}
+
+  
+  

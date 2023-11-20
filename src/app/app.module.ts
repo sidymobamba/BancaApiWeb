@@ -13,6 +13,8 @@ import {MatCardModule} from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -25,6 +27,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SelectBancaComponent } from './components/select-banca/select-banca.component';
+import { AddUtenteComponent } from './components/add-utente/add-utente.component';
+import { EditUtenteComponent } from './components/edit-utente/edit-utente.component';
+import { EditFuncComponent } from './components/edit-func/edit-func.component';
+import { LoginUserComponent } from './components/login-user/login-user.component';
+import { DashboardUserComponent } from './components/dashboard-user/dashboard-user.component';
+import { PrelievoComponent } from './components/prelievo/prelievo.component';
+import { VersamentoComponent } from './components/versamento/versamento.component';
+import { SaldoComponent } from './components/saldo/saldo.component';
+import { RegistroOperazioniComponent } from './components/registro-operazioni/registro-operazioni.component';
+import { ScektaGestioneComponent } from './components/scekta-gestione/scekta-gestione.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +46,17 @@ import { SelectBancaComponent } from './components/select-banca/select-banca.com
     DashboardComponent,
     LoginComponent,
     SignupComponent,
-    SelectBancaComponent
+    SelectBancaComponent,
+    AddUtenteComponent,
+    EditUtenteComponent,
+    EditFuncComponent,
+    LoginUserComponent,
+    DashboardUserComponent,
+    PrelievoComponent,
+    VersamentoComponent,
+    SaldoComponent,
+    RegistroOperazioniComponent,
+    ScektaGestioneComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +74,9 @@ import { SelectBancaComponent } from './components/select-banca/select-banca.com
     MatCardModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule,
+  
   
     
   ],

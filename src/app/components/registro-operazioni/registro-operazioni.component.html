@@ -1,0 +1,22 @@
+<div>
+    <h2>Operation Log</h2>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Functionality</th>
+          <th>Quantity</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let operazione of operazioni; let even = even" [ngClass]="{'even-row': even, 'odd-row': !even}">
+          <td>{{ operazione.id }}</td>
+          <td>{{ operazione.funzionalita }}</td>
+          <td>{{ operazione.quantita }}</td>
+          <td>{{ operazione.dataOperazione | date: 'short' }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

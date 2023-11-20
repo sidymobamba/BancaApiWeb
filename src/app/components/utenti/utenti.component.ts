@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Utente } from 'src/app/models/utente.model';
 import { UtentiService } from 'src/app/services/utenti.service';
 
@@ -16,13 +16,15 @@ export class UtentiComponent implements OnInit {
       idBanca: 0,
       nomeUtente: '',
       password: '',
-      bloccato: 0
+      bloccato: false,
+      Role: '',
+      Token: ''
     }
   ]
 
   idBanca!: number;
 
-  constructor(private utentiService: UtentiService, private route: ActivatedRoute) {}
+  constructor(private utentiService: UtentiService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     // this.utentiService.getAllUtentti()
@@ -49,5 +51,12 @@ export class UtentiComponent implements OnInit {
     
     });
   }
+
+  navigateToAddUtente(): void {
+    this.router.navigate(['add'], { relativeTo: this.route });
+  }
+
+  
+  
 
 }

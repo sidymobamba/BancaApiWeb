@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { banca } from 'src/app/models/banca.model';
 import { Funzionalita } from 'src/app/models/funzionalita.model';
 import { BancaService } from 'src/app/services/banca.service';
@@ -15,7 +15,7 @@ export class BancaComponent implements OnInit {
   funzionalita!: Funzionalita[];
 
   constructor(
-    private route: ActivatedRoute, private funzionalitaService: FunzionalitaService) {}
+    private route: ActivatedRoute, private funzionalitaService: FunzionalitaService, private router: Router ) {}
 
   ngOnInit(): void {
     this.route.parent?.params.subscribe(parentParams => {
@@ -30,5 +30,10 @@ export class BancaComponent implements OnInit {
         },
       });
     });
+  }
+
+  navigateToEditFunc() {
+    this.router.navigate(['dashboard', this.idBanca, 'banche', 'edit', this.idBanca]);
+
   }
 }

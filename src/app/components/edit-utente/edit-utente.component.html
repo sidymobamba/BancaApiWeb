@@ -1,0 +1,36 @@
+<div class="container my-5">
+    <h1 class="mb-4">Edit Utente</h1>
+    <div class="row">
+      <div class="col-lg-6">
+        <form (ngSubmit)="updateUtente()" #userForm="ngForm" class="user-form">
+          <div class="mb-3">
+            <label for="id" class="form-label">ID</label>
+            <input type="text" class="form-control" id="id" readonly name="id" [(ngModel)]="utenteDetails.id">
+          </div>
+          <div class="mb-3">
+            <label for="idBanca" class="form-label">ID Banca</label>
+            <input type="text" class="form-control" id="idBanca" readonly name="idBanca" [(ngModel)]="utenteDetails.idBanca">
+          </div>
+          <div class="mb-3">
+            <label for="nomeUtente" class="form-label">Nome Utente</label>
+            <input type="text" class="form-control" id="nomeUtente" name="nomeUtente" [(ngModel)]="utenteDetails.nomeUtente">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="utenteDetails.password">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="bloccato" name="bloccato" [(ngModel)]="utenteDetails.bloccato">
+            <label class="form-check-label" for="bloccato">Is Locked</label>
+          </div>
+          <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <input type="text" class="form-control" id="role" name="role" [(ngModel)]="utenteDetails.Role">
+          </div>
+          <button mat-raised-button color="primary" type="submit">Save</button>
+          <button mat-raised-button color="warn" type="button" (click)="deleteUtente(utenteDetails.id)">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

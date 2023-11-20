@@ -1,24 +1,30 @@
 <div class="container my-5">
     <h1 class="text-center mb-4">Utenti</h1>
-    <button mat-raised-button color="primary" routerLink="add">Add Utente</button>
-    
- <table class="table table-striped table-bordered table-responsive" *ngIf="utenti">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>NomeUtente</th>
-                <th>Bloccato </th>
-                <th> </th>
-            </tr>
+    <button mat-raised-button color="primary" (click)="navigateToAddUtente()">Add Utente</button>
+  
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Nome Utente</th>
+            <th>Is Locked?</th>
+            <th> </th>
+          </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let utente of utenti">
-                <td>{{ utente.id }}</td>
-                <td>{{ utente.nomeUtente }}</td>
-                <td>{{ utente.bloccato }}</td>
-                <td><a [routerLink]="'/utenti/edit/' + utente.id">View</a></td>
-            </tr>
+          <tr *ngFor="let utente of utenti">
+            <td>{{ utente.id }}</td>
+            <td>{{ utente.nomeUtente }}</td>
+            <td>{{ utente.bloccato ? 'Yes' : 'No' }}</td>
+            <td>
+              <a [routerLink]="'edit/' + utente.id" >Edit</a>
+            </td>
+          </tr>
         </tbody>
-    </table>
-    <p *ngIf="!utenti" class="text-center">No Utente found</p>
-</div>
+      </table>
+    </div>
+  
+    <p *ngIf="!utenti" class="text-center mt-3">No Utente found</p>
+  </div>
+  

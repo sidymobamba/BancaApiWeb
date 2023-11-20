@@ -1,0 +1,19 @@
+<div class="prelievo-container">
+    <h2>Effettua Prelievo</h2>
+  
+    <div class="form-group">
+      <label for="quantita">Quantità:</label>
+      <input type="number" id="quantita" [(ngModel)]="operazione.quantita" />
+    </div>
+  
+    <button class="prelievo-button" (click)="effettuaPrelievo()">Effettua Prelievo</button>
+  
+    <div *ngIf="prelievoSuccesso" class="success-message">
+      Prelievo effettuato con successo!
+    </div>
+  
+    <div *ngIf="errorePrelievo" class="error-message">
+      Errore durante il prelievo. Controlla la quantità e riprova.
+    </div>
+  </div>
+  

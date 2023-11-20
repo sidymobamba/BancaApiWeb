@@ -1,0 +1,33 @@
+/* saldo.component.css */
+.saldo-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  /* Style for the heading */
+  h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the saldo info */
+  .saldo-info {
+    text-align: center;
+  }
+  
+  /* Style for the saldo amount */
+  .saldo-amount {
+    font-size: 24px;
+    color: #28a745; /* Green color for positive balance */
+  }
+  
+  /* Style for negative balance (if applicable) */
+  .saldo-amount.negative {
+    color: #dc3545; /* Red color for negative balance */
+  }
+  

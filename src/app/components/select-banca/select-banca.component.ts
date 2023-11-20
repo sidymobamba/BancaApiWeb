@@ -24,7 +24,7 @@ export class SelectBancaComponent implements OnInit {
   onBancaSelected(): void {
     // Navigate to the login page with the selected bancaId
     if (this.selectedBanca !== null) {
-      this.router.navigate(['/login', this.selectedBanca]);
+      this.router.navigate(['/sceltaGestione', this.selectedBanca]);
     }
   }
 }

@@ -1,0 +1,27 @@
+.user-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-form h1 {
+    color: #007bff; 
+  }
+  
+  .user-form label {
+    font-weight: bold;
+  }
+  
+  .user-form button {
+    margin-top: 15px;
+  }
+  
+  .user-form .form-check-input {
+    margin-top: 5px;
+  }
+  
+  .user-form button:hover {
+    filter: brightness(90%);
+  }
+  

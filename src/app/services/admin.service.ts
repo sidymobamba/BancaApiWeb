@@ -24,15 +24,17 @@ export class AdminService {
   }
 
   login(adminCredentials: any, selectedBancaId: number): Observable<Admin> {
+    console.log(adminCredentials);
     return this.http.post<Admin>(`${this.baseApiUrl}api/Admin/authenticate`, adminCredentials)
       .pipe(
         map(adminData => {
           if (adminData && adminData.idBanca === selectedBancaId) {
             return adminData;
           } else {
-            throw new Error('Accesso non autorizzato');
+            throw new Error('Accesso non autorizzato: Credenziali o banca non valide.');
+            return adminData;
           }
-        }),
+        }),        
         catchError(error => {
           console.error('Errore durante il login:', error);
           return throwError(error);
