@@ -1,10 +1,20 @@
-<div class="versamento-container">
-  <h2>Versamento</h2>
+<div class="outer">
+  <div class="versamento-container">
+    <h2>Versamento</h2>
 
-  <div class="form-group">
-    <label for="quantita">Quantità:</label>
-    <input type="number" id="quantita" [(ngModel)]="operazione.quantita" />
+    <div class="form-group">
+      <label for="quantita">Quantità:</label>
+      <input type="number" id="quantita" [(ngModel)]="operazione.quantita" />
+    </div>
+
+    <button class="versamento-button" (click)="confermaVersamento()">Effettua Versamento</button>
+
+    <div *ngIf="versamentoSuccesso" class="success-message">
+      {{ feedbackMessaggio }}
+    </div>
+
+    <div *ngIf="erroreVersamento" class="error-message">
+      {{ feedbackMessaggio }}
+    </div>
   </div>
-
-  <button class="versamento-button" (click)="effettuaVersamento()">Effettua Versamento</button>
 </div>

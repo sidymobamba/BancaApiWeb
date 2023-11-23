@@ -22,10 +22,10 @@ export class MovimentiService {
     return this.http.post(url, operazione);
   }
 
-  getSaldo(idUtente: number): Observable<string> {
+  getSaldo(idUtente: number): Observable<any> {
     const url = `https://localhost:7020/api/movimenti/saldo/${idUtente}`;
 
-    return this.http.get<string>(url);
+    return this.http.get<any>(url);
   }
 
   getRegistroOperazioni(idUtente: number): Observable<Operazione[]> {

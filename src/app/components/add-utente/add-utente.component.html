@@ -3,7 +3,7 @@
   <form [formGroup]="utenteForm" (ngSubmit)="onSubmit()" class="custom-form">
     <div class="mb-3">
       <label for="idBanca" class="form-label">ID Banca:</label>
-      <input type="text" id="idBanca" name="idBanca" formControlName="idBanca" class="form-control" required>
+      <input type="text" id="idBanca" readonly name="idBanca" formControlName="idBanca" [(ngModel)]="this.idBanca " class="form-control" required>
     </div>
 
     <div class="mb-3">

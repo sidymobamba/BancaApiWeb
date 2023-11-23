@@ -3,6 +3,7 @@ import { Operazione } from 'src/app/models/operazione.model';
 import { MovimentiService } from 'src/app/services/movimenti.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-prelievo',
@@ -21,6 +22,7 @@ export class PrelievoComponent implements OnInit, OnDestroy {
 
   prelievoSuccesso: boolean = false;
   errorePrelievo: boolean = false;
+  feedbackMessaggio: string = '';
 
   private routeSubscription: Subscription | null = null;
 
@@ -30,13 +32,11 @@ export class PrelievoComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // Fetch the idBanca from the parent route snapshot
     const idBanca = +this.route.snapshot.parent?.params['idBanca'];
     if (!isNaN(idBanca)) {
       this.operazione.idBanca = idBanca;
     }
 
-    // Fetch the idUtente from the child route parameters
     this.routeSubscription = this.route.params.subscribe(params => {
       const idUtente = +params['idUtente'];
       if (!isNaN(idUtente)) {
@@ -46,33 +46,52 @@ export class PrelievoComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // Unsubscribe to avoid memory leaks
     if (this.routeSubscription) {
       this.routeSubscription.unsubscribe();
+    }
+  }
+
+  confermaPrelievo() {
+    const conferma = window.confirm(`Sei sicuro di voler ritirare ${this.operazione.quantita} EUR?`);
+
+    if (conferma) {
+      this.effettuaPrelievo();
+    } else {
+      // L'utente ha annullato la conferma
     }
   }
 
   effettuaPrelievo() {
     this.movimentiService.effettuaPrelievo(this.operazione.idUtente, this.operazione)
       .subscribe(
-        response => {
-          console.log('Risposta API:', response);
+        (response: any) => {
+          if (response instanceof HttpErrorResponse) {
+            // Gestisci gli errori di parsing qui
+            console.error('Errore durante il parsing della risposta:', response.message);
+            this.errorePrelievo = true;
+            return;
+          }
   
-          // Verifica se la risposta contiene un messaggio di successo
-          if (typeof response === 'string' && response.includes('Prelievo effettuato con successo')) {
-            console.log('Prelievo effettuato con successo');
-            // Gestisci il successo, ad esempio mostrando un messaggio all'utente
+          if (this.isPrelievoSuccesso(response)) {
+            this.prelievoSuccesso = true;
+            this.feedbackMessaggio = `Hai ritirato ${this.operazione.quantita} EUR con successo!`;
+            // Aggiorna lo stato della vista o esegui altre azioni necessarie
           } else {
             console.error('La risposta API non contiene un messaggio di successo valido');
-            // Gestisci la situazione in cui la risposta non è quella attesa
+            this.errorePrelievo = true;
           }
         },
         error => {
           console.error('Errore durante il prelievo', error);
-          // Gestisci l'errore, ad esempio mostrando un messaggio di errore all'utente
+          this.errorePrelievo = true;
         }
       );
   }
   
-  
+
+  private isPrelievoSuccesso(response: any): boolean {
+    // Implementa la logica per determinare se il prelievo è riuscito
+    // Ad esempio, potresti verificare la presenza di un messaggio di successo nella risposta API
+    return typeof response === 'string' && response.includes('Prelievo effettuato con successo');
+  }
 }

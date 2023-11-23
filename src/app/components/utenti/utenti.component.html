@@ -6,7 +6,6 @@
       <table class="table table-striped table-bordered">
         <thead class="thead-dark">
           <tr>
-            <th>ID</th>
             <th>Nome Utente</th>
             <th>Is Locked?</th>
             <th> </th>
@@ -14,7 +13,6 @@
         </thead>
         <tbody>
           <tr *ngFor="let utente of utenti">
-            <td>{{ utente.id }}</td>
             <td>{{ utente.nomeUtente }}</td>
             <td>{{ utente.bloccato ? 'Yes' : 'No' }}</td>
             <td>

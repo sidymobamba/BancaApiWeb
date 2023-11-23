@@ -57,7 +57,7 @@ export class UtentiService {
     return this.http.post<Utente>(`${this.baseApiUrl}api/utenti/authenticate`, userCredentials)
       .pipe(
         map(userData => {
-          if (userData && userData.idBanca === selectedBancaId) {
+          if (userData &&  userData.idBanca === selectedBancaId) {
             return userData;
           } else {
             throw new Error('Accesso non autorizzato: Credenziali o banca non valide.');
@@ -69,6 +69,21 @@ export class UtentiService {
         })
       );
   }
+
+  isLoggedIn(): boolean{
+    return !!localStorage.getItem('token')
+  }
+
+  getToken(): string | null {
+    const token = localStorage.getItem('token');
+  
+    if (!token) {
+      return null;
+    }
+  
+    return token;
+  }
+  
   
   
 }

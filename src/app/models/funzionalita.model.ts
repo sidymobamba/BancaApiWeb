@@ -1,4 +1,4 @@
 export interface Funzionalita { 
-    id?: number;
+    id: number;
     nome: string;
 }

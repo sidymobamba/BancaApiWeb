@@ -20,58 +20,70 @@ export class EditUtenteComponent implements OnInit {
     Token: ''
   };
 
-  constructor(private route: ActivatedRoute, private utenteservice: UtentiService, private router: Router) {}
+  constructor(private route: ActivatedRoute, private utenteService: UtentiService, private router: Router) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const id: number = Number(params.get('id'));
       if (id) {
-        this.utenteservice.getUtente(id).subscribe(
+        this.utenteService.getUtente(id).subscribe(
           (response: any) => {
             this.utenteDetails = response;
           },
           (error: any) => {
-            console.error('Error fetching user details:', error);
+            console.error('Errore durante il recupero dei dettagli dell\'utente:', error);
           }
         );
       }
     });
   }
 
+  confermaAggiornamento() {
+    const conferma = window.confirm('Sei sicuro di voler salvare le modifiche?');
+    if (conferma) {
+      this.updateUtente();
+    }
+  }
+
+  confermaEliminazione() {
+    const conferma = window.confirm('Sei sicuro di voler eliminare questo utente?');
+    if (conferma) {
+      this.deleteUtente(this.utenteDetails.id);
+    }
+  }
+
   updateUtente() {
     if (this.utenteDetails.id === undefined) {
-      console.error('Id is undefined');
+      console.error('Id non definito');
       return;
     }
-  
-    this.utenteservice.updateUtente(this.utenteDetails.id, this.utenteDetails)
+
+    this.utenteService.updateUtente(this.utenteDetails.id, this.utenteDetails)
       .subscribe({
         next: (response) => {
           this.router.navigate(['dashboard', this.utenteDetails.idBanca, 'utenti']);
         },
         error: (error) => {
-          console.error('Error updating user:', error);
-  
+          console.error('Errore durante l\'aggiornamento dell\'utente:', error);
+
           if (error.error && error.error.errors) {
-            console.error('Validation errors:', error.error.errors);
+            console.error('Errori di convalida:', error.error.errors);
           }
         }
       });
   }
 
-  deleteUtente(id: number | undefined){
+  deleteUtente(id: number | undefined) {
     if (this.utenteDetails.id === undefined) {
-      console.error('Id is undefined');
+      console.error('Id non definito');
       return;
     }
-    this.utenteservice.deleteUtente(id)
-    .subscribe({
-      next: (response) => {
-        this.router.navigate(['dashboard', this.utenteDetails.idBanca, 'utenti']);
-      }
-    });
+
+    this.utenteService.deleteUtente(id)
+      .subscribe({
+        next: (response) => {
+          this.router.navigate(['dashboard', this.utenteDetails.idBanca, 'utenti']);
+        }
+      });
   }
-  
-  
-  
 }

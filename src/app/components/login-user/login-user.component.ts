@@ -13,6 +13,7 @@ export class LoginUserComponent implements OnInit {
   isPasswordVisible = false;
   loginError: string | null = null;
   idBanca: number;
+  
 
   constructor(
     private fb: FormBuilder,
@@ -21,7 +22,7 @@ export class LoginUserComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
+      nomeUtente: ['', Validators.required],
       password: ['', Validators.required]
     });
     this.idBanca = 0; 
@@ -39,15 +40,15 @@ export class LoginUserComponent implements OnInit {
 
   onLogin(): void {
     if (this.loginForm.valid) {
-      const adminCredentials = { ...this.loginForm.value, idBanca: this.idBanca };
-
-      this.utenteService.login(adminCredentials, this.idBanca).subscribe({
+      const userCredentials = { ...this.loginForm.value, idBanca: this.idBanca };
+  
+      this.utenteService.login(userCredentials, this.idBanca).subscribe({
         next: (userData) => {
           console.log('Login successful:', userData);
           this.loginForm.reset();
           this.loginError = null;
-          this.router.navigate(['/dashboard', this.idBanca, 'banche']);
-
+  
+          this.router.navigate(['/dashboardUser', this.idBanca, 'prelievo', userData.id]);
         },
         error: (err) => {
           this.loginError = err.message || 'Invalid username or password. Please try again.';
@@ -58,5 +59,6 @@ export class LoginUserComponent implements OnInit {
       this.loginForm.markAllAsTouched();
     }
   }
+  
 
 }

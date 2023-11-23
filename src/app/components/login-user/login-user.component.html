@@ -12,8 +12,8 @@
               <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
                 <mat-form-field class="form-group pt-3">
                   <mat-icon matPrefix class="fa fa-user p-2"></mat-icon>
-                  <input matInput formControlName="username" placeholder="Username">
-                  <div *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched" class="error-message">
+                  <input matInput formControlName="nomeUtente" placeholder="NomeUtente">
+                  <div *ngIf="loginForm.get('nomeUtente')?.hasError('required') && loginForm.get('nomeUtente')?.touched" class="error-message">
                     Username is required.
                   </div>
                 </mat-form-field>

@@ -18,7 +18,7 @@ export class SaldoComponent implements OnInit, OnDestroy {
     quantita: 0,
     dataOperazione: new Date()
   };
-  saldo: number | undefined;
+  saldo: number = 0;
   idUtente: number = 0; 
   private routeSubscription: Subscription | null = null;
 
@@ -34,7 +34,8 @@ export class SaldoComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.movimentiService.getSaldo(this.operazione.idUtente).subscribe(
       response => {
-        this.saldo = +response;
+        console.log(response);
+        this.saldo = response.saldo;
         console.log('Saldo:', this.saldo); 
       },
       error => {

@@ -8,7 +8,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -37,6 +37,7 @@ import { VersamentoComponent } from './components/versamento/versamento.componen
 import { SaldoComponent } from './components/saldo/saldo.component';
 import { RegistroOperazioniComponent } from './components/registro-operazioni/registro-operazioni.component';
 import { ScektaGestioneComponent } from './components/scekta-gestione/scekta-gestione.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,12 @@ import { ScektaGestioneComponent } from './components/scekta-gestione/scekta-ges
   
     
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

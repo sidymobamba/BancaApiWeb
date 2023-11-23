@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FunzionalitaService } from 'src/app/services/funzionalita.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class EditFuncComponent {
   idBanca!: number;
   funzionalitaDaSalvare: any[] = [];
 
-  constructor(private funzionalitaService: FunzionalitaService, private route: ActivatedRoute) {
+  constructor(private funzionalitaService: FunzionalitaService, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => {
       this.idBanca = +params['idBanca'];
       this.funzionalitaService.getFunzionalita().subscribe(data => {
@@ -23,25 +23,25 @@ export class EditFuncComponent {
 
   onCheckboxChange(funzione: any) {
     if (funzione.attiva) {
-      // Aggiungi alla lista da salvare
-      this.funzionalitaDaSalvare.push({ idFunzionalita: funzione.id, nome: funzione.nome });
+      this.funzionalitaDaSalvare.push({ id: funzione.id, nome: funzione.nome });
     } else {
-      // Rimuovi dalla lista se deselezionato (se necessario)
-      this.funzionalitaDaSalvare = this.funzionalitaDaSalvare.filter(item => item.idFunzionalita !== funzione.id);
+      this.funzionalitaDaSalvare = this.funzionalitaDaSalvare.filter(item => item.id !== funzione.id);
     }
   }
 
   onSubmit() {
-    console.log('ID Banca:', this.idBanca);
-    console.log('Funzionalità da salvare:', this.funzionalitaDaSalvare);
+    const conferma = window.confirm('Sei sicuro di voler salvare le modifiche?');
 
-    this.funzionalitaService.updateFunzionalitaByBancaId(this.idBanca, this.funzionalitaDaSalvare).subscribe(
-      () => {
-        console.log('Funzionalità aggiornate con successo');
-      },
-      (error) => {
-        console.error('Errore durante l\'aggiornamento delle funzionalità:', error);
-      }
-    );
-  }  
+    if (conferma) {
+      this.funzionalitaService.aggiungiFunzionalita(this.idBanca, this.funzionalitaDaSalvare)
+        .subscribe(() => {
+          this.funzionalitaDaSalvare = [];
+          this.funzionalitaService.getFunzionalita().subscribe(data => {
+            this.funzionalita = data;
+            this.router.navigate(['dashboard', this.idBanca, 'banche']);
+          });
+        });
+    } else {
+    }
+  }
 }

@@ -23,21 +23,18 @@ export class FunzionalitaService {
   //   return this.http.put<void>(`${this.baseApiUrl}api/banchefunc/update-funzionalita/${idBanca}`, bancheFuncDtos);
   // }
 
-  updateFunzionalitaByBancaId(idBanca: number, funzionalitaList: Funzionalita[]): Observable<void> {
-    const bancheFuncDtos = funzionalitaList.map(funzionalita => ({ idFunzionalita: funzionalita.id }));
-  
-    return this.http.put<void>(`${this.baseApiUrl}api/banchefunc/update-funz/${idBanca}`, bancheFuncDtos)
+  aggiungiFunzionalita(idBanca: number, funzionalitaDaAggiungere: any[]): Observable<void> {
+    return this.http.put<void>(`${this.baseApiUrl}api/banchefunc/update-funz/${idBanca}`, funzionalitaDaAggiungere)
       .pipe(
         catchError((error) => {
           console.error('Errore durante la richiesta HTTP:', error);
-          throw error; 
+          throw error;
         })
       );
   }
   
 }
 
-  
   
   
 

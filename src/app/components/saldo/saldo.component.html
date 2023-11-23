@@ -1,7 +1,9 @@
-<div class="saldo-container">
-  <h2>Your Account Balance</h2>
+<div class="outer">
+  <div class="saldo-container">
+    <h2>Your Account Balance</h2>
 
-  <div class="saldo-info">
-    <p class="saldo-amount">Saldo: {{ saldo | currency:'EUR':'symbol':'1.2-2' }}</p>
+    <div class="saldo-info">
+      <p class="saldo-amount">Saldo: {{ saldo }}</p>
+    </div>
   </div>
 </div>

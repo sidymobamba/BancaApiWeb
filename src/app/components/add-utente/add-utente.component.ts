@@ -11,6 +11,7 @@ import { UtentiService } from 'src/app/services/utenti.service';
 })
 export class AddUtenteComponent implements OnInit {
   utenteForm!: FormGroup;
+  idBanca!: number;
 
 
   constructor(
@@ -22,6 +23,8 @@ export class AddUtenteComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.idBanca = +this.route.snapshot.parent?.params['idBanca'];
+   
     
   }
 
@@ -37,17 +40,13 @@ export class AddUtenteComponent implements OnInit {
 
   onSubmit(): void {
     if (this.utenteForm.valid) {
-      // If the form is valid, you can proceed with form submission
       const utenteDetails = this.utenteForm.value;
   
-      // Call the service to add the utente
       this.utenteService.addUtente(utenteDetails).subscribe({
         next: (response) => {
-          // Handle success, e.g., navigate to a different page
           this.router.navigate(['dashboard', utenteDetails.idBanca, 'utenti']);
         },
         error: (error) => {
-          // Handle error, log or display an error message
           console.error('Error adding utente:', error);
   
           if (error.error && error.error.errors) {
@@ -56,7 +55,6 @@ export class AddUtenteComponent implements OnInit {
         }
       });
     } else {
-      // If the form is invalid, you might want to show an error message or take appropriate action
       console.error('Form is invalid. Please check the fields.');
     }
   }
