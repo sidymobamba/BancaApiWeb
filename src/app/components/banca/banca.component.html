@@ -1,24 +1,28 @@
-<div class="container my-5 user-form">
-  <h1 class="text-center mb-4">Funzionalità della Banca</h1>
+<div class="outer">
+  <div class="container my-5 user-form">
+    <h1 class="text-center mb-4">Funzionalità della Banca</h1>
 
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered">
-      <thead class="thead-dark">
-        <tr>
-          <th>Nome</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let funzione of funzionalita">
-          <td>{{ funzione.nome }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="table-responsive" *ngIf="funzionalita$ | async as funzionalita; else loading">
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>Nome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let funzione of funzionalita">
+            <td>{{ funzione.nome }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-  <p *ngIf="!funzionalita" class="text-center mt-3">Nessuna funzionalità trovata</p>
+    <ng-template #loading>
+      <p class="text-center mt-3">Nessuna funzionalità trovata</p>
+    </ng-template>
 
-  <div class="text-center">
-    <button mat-raised-button color="primary" (click)="navigateToEditFunc()">Modifica</button>
+    <div class="text-center">
+      <button mat-raised-button color="primary" (click)="navigateToEditFunc()">Modifica</button>
+    </div>
   </div>
 </div>

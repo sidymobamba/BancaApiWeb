@@ -1,31 +1,25 @@
 <mat-sidenav-container class="example-container">
     <mat-sidenav mode="side" opened class="sidebar">
-        <mat-nav-list role="list">
-            <mat-list-item role="listitem" routerLink="prelievo/16" [routerLinkActive]="'active'">
-                <mat-icon>money</mat-icon>
-                <span class="nav-label">Prelievo</span>
-            </mat-list-item>
-            <mat-list-item role="listitem" routerLink="versamento/16" [routerLinkActive]="'active'">
-                <mat-icon>attach_money</mat-icon>
-                <span class="nav-label">Versamento</span>
-            </mat-list-item>
-            <mat-list-item role="listitem" routerLink="saldo/16" [routerLinkActive]="'active'">
-                <mat-icon>account_balance_wallet</mat-icon>
-                <span class="nav-label">Report Saldo</span>
-            </mat-list-item>
-            <mat-list-item role="listitem" routerLink="registroOperazioni/16" [routerLinkActive]="'active'">
-                <mat-icon>list_alt</mat-icon>
-                <span class="nav-label">Registro Operazioni</span>
-            </mat-list-item>
-        </mat-nav-list>
+      <mat-nav-list role="list">
+        <mat-list-item role="listitem" routerLink="funcprova/16" [routerLinkActive]="'active'">
+          <mat-icon>home</mat-icon>
+          <span class="nav-label">Menu</span>
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="saldo/16" [routerLinkActive]="'active'">
+          <mat-icon>account_balance_wallet</mat-icon>
+          <span class="nav-label">Report Saldo</span>
+        </mat-list-item>
+      </mat-nav-list>
     </mat-sidenav>
+  
     <mat-sidenav-content style="width: 100%;">
-        <mat-toolbar color="primary" class="toolbar">
-            <span class="example-spacer"></span>
-            <button mat-icon-button class="example-icon" aria-label="Logout" (click)="onLogout()">
-                <mat-icon>exit_to_app</mat-icon>
-            </button>
-        </mat-toolbar>
-        <router-outlet></router-outlet>
+      <mat-toolbar color="primary" class="toolbar">
+        <button mat-icon-button class="example-icon" aria-label="Logout" (click)="onLogout()">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </mat-toolbar>
+  
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
-</mat-sidenav-container>
+  </mat-sidenav-container>
+  

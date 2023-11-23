@@ -23,14 +23,14 @@
   /* .sidebar: Stile per la barra laterale */
   .sidebar {
     width: 240px; /* Larghezza fissa della barra laterale */
-    background-color: #333; /* Colore di sfondo scuro per la barra laterale */
+    background-color: #a8c1eb; /* Colore di sfondo scuro per la barra laterale */
     color: #fff; /* Testo bianco per maggiore contrasto */
   }
   
   .toolbar {
     background-color: #2196F3; /* Un colore di sfondo attraente per la barra degli strumenti */
     color: #fff; /* Testo bianco per maggiore contrasto */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Aggiungi una leggera ombra */
+    box-shadow: 0 2px 4px rgb(7, 5, 5); /* Aggiungi una leggera ombra */
     position: relative; /* Per consentire il posizionamento assoluto dei figli */
   }
   
@@ -44,7 +44,6 @@
     flex-grow: 1;
   }
   
-  /* .logout-button: Stile per il pulsante di logout */
   logout-button {
     position: absolute;
     top: 10px;

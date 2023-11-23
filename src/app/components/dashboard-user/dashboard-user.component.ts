@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-user',
@@ -7,10 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard-user.component.css']
 })
 export class DashboardUserComponent implements OnInit {
+  private routeSubscription: Subscription | null = null;
+  id!: number;
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private route: ActivatedRoute,){}
   ngOnInit(): void {
-  
+    this.routeSubscription = this.route.params.subscribe(params => {
+      console.log(params);
+      this.id = +params['id'];
+    });
   }
 
   onLogout(): void {

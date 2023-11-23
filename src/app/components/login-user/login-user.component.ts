@@ -48,7 +48,7 @@ export class LoginUserComponent implements OnInit {
           this.loginForm.reset();
           this.loginError = null;
   
-          this.router.navigate(['/dashboardUser', this.idBanca, 'prelievo', userData.id]);
+          this.router.navigate(['/dashboardUser', this.idBanca, 'funcprova', userData.id]);
         },
         error: (err) => {
           this.loginError = err.message || 'Invalid username or password. Please try again.';

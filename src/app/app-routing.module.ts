@@ -16,6 +16,7 @@ import { VersamentoComponent } from './components/versamento/versamento.componen
 import { SaldoComponent } from './components/saldo/saldo.component';
 import { RegistroOperazioniComponent } from './components/registro-operazioni/registro-operazioni.component';
 import { ScektaGestioneComponent } from './components/scekta-gestione/scekta-gestione.component';
+import { FuncprovaComponent } from './components/funcprova/funcprova.component';
 
 const routes: Routes = [
   { path: 'selectBanca', component: SelectBancaComponent },
@@ -23,11 +24,12 @@ const routes: Routes = [
   { path: 'sceltaGestione/:idBanca', component: ScektaGestioneComponent },
   { path: 'dashboardUser/:idBanca', component: DashboardUserComponent, 
   children: [
-    { path: '', redirectTo: 'prelievo', pathMatch: 'full' },
+    { path: '', redirectTo: 'funcprova/:idUtente', pathMatch: 'full' },
     { path: 'prelievo/:idUtente', component: PrelievoComponent },
     { path: 'versamento/:idUtente', component: VersamentoComponent },
     { path: 'saldo/:idUtente', component: SaldoComponent },
     { path: 'registroOperazioni/:idUtente', component: RegistroOperazioniComponent },
+    { path: 'funcprova/:idUtente', component: FuncprovaComponent }
   
     ] 
   },
@@ -39,7 +41,7 @@ const routes: Routes = [
       { path: 'banche/edit/:idBanca', component: EditFuncComponent },
       { path: 'utenti', component: UtentiComponent}, 
       { path: 'utenti/add', component: AddUtenteComponent },
-      { path: 'utenti/edit/:id', component: EditUtenteComponent }
+      { path: 'utenti/edit/:id', component: EditUtenteComponent },
     
     ],
   },

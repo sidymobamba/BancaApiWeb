@@ -57,7 +57,6 @@ export class PrelievoComponent implements OnInit, OnDestroy {
     if (conferma) {
       this.effettuaPrelievo();
     } else {
-      // L'utente ha annullato la conferma
     }
   }
 
@@ -66,7 +65,6 @@ export class PrelievoComponent implements OnInit, OnDestroy {
       .subscribe(
         (response: any) => {
           if (response instanceof HttpErrorResponse) {
-            // Gestisci gli errori di parsing qui
             console.error('Errore durante il parsing della risposta:', response.message);
             this.errorePrelievo = true;
             return;
@@ -75,7 +73,6 @@ export class PrelievoComponent implements OnInit, OnDestroy {
           if (this.isPrelievoSuccesso(response)) {
             this.prelievoSuccesso = true;
             this.feedbackMessaggio = `Hai ritirato ${this.operazione.quantita} EUR con successo!`;
-            // Aggiorna lo stato della vista o esegui altre azioni necessarie
           } else {
             console.error('La risposta API non contiene un messaggio di successo valido');
             this.errorePrelievo = true;
@@ -90,8 +87,6 @@ export class PrelievoComponent implements OnInit, OnDestroy {
   
 
   private isPrelievoSuccesso(response: any): boolean {
-    // Implementa la logica per determinare se il prelievo è riuscito
-    // Ad esempio, potresti verificare la presenza di un messaggio di successo nella risposta API
     return typeof response === 'string' && response.includes('Prelievo effettuato con successo');
   }
 }

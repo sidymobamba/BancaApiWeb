@@ -38,6 +38,8 @@ import { SaldoComponent } from './components/saldo/saldo.component';
 import { RegistroOperazioniComponent } from './components/registro-operazioni/registro-operazioni.component';
 import { ScektaGestioneComponent } from './components/scekta-gestione/scekta-gestione.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { FuncprovaComponent } from './components/funcprova/funcprova.component';
+import { DashComponent } from './components/dash/dash.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     VersamentoComponent,
     SaldoComponent,
     RegistroOperazioniComponent,
-    ScektaGestioneComponent
+    ScektaGestioneComponent,
+    FuncprovaComponent,
+    DashComponent
   ],
   imports: [
     BrowserModule,

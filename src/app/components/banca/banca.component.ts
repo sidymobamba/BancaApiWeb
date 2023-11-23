@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, observable } from 'rxjs';
 import { banca } from 'src/app/models/banca.model';
 import { Funzionalita } from 'src/app/models/funzionalita.model';
 import { BancaService } from 'src/app/services/banca.service';
@@ -13,6 +14,7 @@ import { FunzionalitaService } from 'src/app/services/funzionalita.service';
 export class BancaComponent implements OnInit {
   idBanca!: number;
   funzionalita!: Funzionalita[];
+  funzionalita$:Observable<Funzionalita[]> = new Observable<Funzionalita[]>();
 
   constructor(
     private route: ActivatedRoute, private funzionalitaService: FunzionalitaService, private router: Router ) {}
@@ -20,15 +22,7 @@ export class BancaComponent implements OnInit {
   ngOnInit(): void {
     this.route.parent?.params.subscribe(parentParams => {
       this.idBanca = +parentParams['idBanca'];
-
-      this.funzionalitaService.getFunzionalitaByBancaId(this.idBanca).subscribe({
-        next: (funzionalita) => {
-          this.funzionalita = funzionalita;
-        },
-        error: (err) => {
-          console.error('Errore nel recupero delle funzionalità:', err);
-        },
-      });
+     this.funzionalita$ = this.funzionalitaService.getFunzionalitaByBancaId(this.idBanca)
     });
   }
 

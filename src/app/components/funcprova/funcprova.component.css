@@ -1,0 +1,49 @@
+.outer {
+  height: 100vh;
+  background: linear-gradient(135deg, #daf7e2, #e6b4c4, #c2c2fc, #e1e2ae);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #f8f9fa; /* Colore di sfondo */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+  
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #007bff; /* Colore del testo */
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+  
+      th, td {
+        padding: 15px;
+        text-align: center;
+        border: 1px solid #dee2e6; /* Colore del bordo */
+      }
+    }
+  
+    button {
+      background-color: #28a745; /* Colore di sfondo del pulsante */
+      color: #fff; /* Colore del testo del pulsante */
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease; /* Transizione del colore di sfondo */
+  
+      &:hover {
+        background-color: #218838; /* Colore di sfondo del pulsante al passaggio del mouse */
+      }
+    }
+  }
+  
